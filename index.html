@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Medic South Africa</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
         <div class="logo">
-            <!-- Placeholder for logo -->
-            <img src="logo.png" alt="Set Medic South Africa Logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Set Medic South Africa Logo">
         </div>
         <nav>
             <ul>
@@ -40,7 +39,7 @@
         </section>
         <section id="quote">
             <h2>Request a Quote</h2>
-            <form>
+            <form action="/submit-quote" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
