@@ -1,1 +1,48 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash import random import string app = Flask(__name__) app.secret_key = 'your-secret-key' # Replace with a secure key in production # Dummy data for services services = [ {'id': 1, 'name': 'On-set Medical Support', 'description': 'Comprehensive on-set medical support for film productions.', 'price': 500}, {'id': 2, 'name': 'Event First Aid Kit', 'description': 'Complete first aid kit services for events.', 'price': 300}, {'id': 3, 'name': 'Post-Production Health Check', 'description': 'Health check services post event or filming.', 'price': 400}, ] # Dummy blog posts data blog_posts = [ {'id': 1, 'title': 'The Importance of On-set Medical Support', 'snippet': 'A look into why on-set support is crucial...', 'content': 'Full article content for on-set medical support blog post.', 'date': '2025-06-01'}, {'id': 2, 'title': 'Innovative First Aid Solutions for Events', 'snippet': 'Exploring modern approaches to first aid kits...', 'content': 'Full article content for innovative first aid solutions blog post.', 'date': '2025-06-15'}, ] @app.route('/') def index(): return render_template('index.html') @app.route('/services') def services_page(): return render_template('services.html', services=services) @app.route('/quote', methods=['GET', 'POST']) def quote(): if request.method == 'POST': # Process quote request form name = request.form.get('name') company = request.form.get('company') email = request.form.get('email') contact = request.form.get('contact') service_id = int(request.form.get('service')) details = request.form.get('details') # Find the selected service selected_service = next((s for s in services if s['id'] == service_id), None) if not selected_service: flash("Invalid service selected.") return redirect(url_for('quote')) # Simulate generating a quote number and saving to session quote_number = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8)) quote_data = { 'quote_number': quote_number, 'name': name, 'company': company, 'email': email, 'contact': contact, 'service': selected_service, 'details': details } session['quote_data'] = quote_data return redirect(url_for('invoice')) return render_template('quote.html', services=services) @app.route('/invoice') def invoice(): quote_data = session.get('quote_data') if not quote_data: return redirect(url_for('quote')) total_amount = quote_data['service']['price'] invoice_data = { 'invoice_number': 'INV-' + quote_data['quote_number'], 'name': quote_data['name'], 'company': quote_data['company'], 'service': quote_data['service'], 'total_amount': total_amount } session['invoice_data'] = invoice_data return render_template('invoice.html', invoice=invoice_data) @app.route('/payment', methods=['GET', 'POST']) def payment(): invoice_data = session.get('invoice_data') if not invoice_data: return redirect(url_for('quote')) if request.method == 'POST': # Simulate payment processing card_number = request.form.get('card_number') expiry = request.form.get('expiry') cvv = request.form.get('cvv') payment_confirmation = 'PAY-' + invoice_data['invoice_number'] session['payment_confirmation'] = payment_confirmation return redirect(url_for('receipt')) return render_template('payment.html', invoice=invoice_data) @app.route('/receipt') def receipt(): invoice_data = session.get('invoice_data') payment_confirmation = session.get('payment_confirmation') if not invoice_data or not payment_confirmation: return redirect(url_for('quote')) receipt_data = { 'receipt_number': payment_confirmation, 'name': invoice_data['name'], 'company': invoice_data['company'], 'service': invoice_data['service'], 'total_amount': invoice_data['total_amount'] } # Clear session data for this demo  session.pop('quote_data', None) session.pop('invoice_data', None)  session.pop('payment_confirmation', None) return render_template('receipt.html', receipt=receipt_data) @app.route('/blog') def blog(): return render_template('blog.html', posts=blog_posts) @app.route('/blog/<int:post_id>') def blog_detail(post_id): post = next((p for p in blog_posts if p['id'] == post_id), None) if not post: return redirect(url_for('blog')) return render_template('blog_detail.html', post=post) if __name__ == '__main__':  app.run(debug=True)
+
+from flask import Flask, render_template, redirect, url_for
+
+app = Flask(__name__)
+
+# Sample blog posts data
+blog_posts = [
+    {'id': 1, 'title': 'First Post', 'content': 'This is the first post.'},
+    {'id': 2, 'title': 'Second Post', 'content': 'This is the second post.'}
+]
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/quote')
+def quote():
+    return render_template('quote.html')
+
+@app.route('/invoice')
+def invoice():
+    return render_template('invoice.html')
+
+@app.route('/payment')
+def payment():
+    return render_template('payment.html')
+
+@app.route('/receipt')
+def receipt():
+    return render_template('receipt.html')
+
+@app.route('/blog')
+def blog():
+    return render_template('blog.html', posts=blog_posts)
+
+@app.route('/blog/<int:post_id>')
+def blog_detail(post_id):
+    post = next((p for p in blog_posts if p['id'] == post_id), None)
+    if not post:
+        return redirect(url_for('blog'))
+    return render_template('blog_detail.html', post=post)
+
+if __name__ == '__main__':
+    app.run(debug=True)
