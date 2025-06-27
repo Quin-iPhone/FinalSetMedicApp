@@ -1,3 +1,5 @@
 Flask==2.2.2
-gunicorn -w 4 -b 0.0.0.0:5000
-
+Werkzeug>=2.2.2
+Jinja2>=3.1.2
+itsdangerous>=2.1.2
+MarkupSafe>=2.1.1
