@@ -1,5 +1,5 @@
-
 from flask import Flask, render_template, redirect, url_for
+import os
 
 app = Flask(__name__)
 
@@ -44,5 +44,11 @@ def blog_detail(post_id):
         return redirect(url_for('blog'))
     return render_template('blog_detail.html', post=post)
 
+# Health check route
+@app.route('/health')
+def health():
+    return "OK", 200
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
