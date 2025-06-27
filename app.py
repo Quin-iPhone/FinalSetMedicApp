@@ -1,54 +1,15 @@
-from flask import Flask, render_template, redirect, url_for
-import os
+from flask import request, flash
 
-app = Flask(__name__)
+@app.route('/submit-quote', methods=['POST'])
+def submit_quote():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    service = request.form.get('service')
 
-# Sample blog posts data
-blog_posts = [
-    {'id': 1, 'title': 'First Post', 'content': 'This is the first post.'},
-    {'id': 2, 'title': 'Second Post', 'content': 'This is the second post.'}
-]
+    if not name or not email or not service:
+        flash('All fields are required.', 'error')
+        return redirect(url_for('quote'))
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/services')
-def services():
-    return render_template('services.html')
-
-@app.route('/quote')
-def quote():
-    return render_template('quote.html')
-
-@app.route('/invoice')
-def invoice():
-    return render_template('invoice.html')
-
-@app.route('/payment')
-def payment():
-    return render_template('payment.html')
-
-@app.route('/receipt')
-def receipt():
-    return render_template('receipt.html')
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html', posts=blog_posts)
-
-@app.route('/blog/<int:post_id>')
-def blog_detail(post_id):
-    post = next((p for p in blog_posts if p['id'] == post_id), None)
-    if not post:
-        return redirect(url_for('blog'))
-    return render_template('blog_detail.html', post=post)
-
-# Health check route
-@app.route('/health')
-def health():
-    return "OK", 200
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    # Simulate saving or processing the quote
+    flash(f'Thank you {name}, your quote request for "{service}" has been received!', 'success')
+    return redirect(url_for('quote'))
