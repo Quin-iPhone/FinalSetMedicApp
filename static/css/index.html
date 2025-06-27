@@ -10,7 +10,7 @@
     <header>
         <div class="logo">
             <!-- Placeholder for logo -->
-            <img src="logo.png" alt="Set Medic South Africa Logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Set Medic South Africa Logo">
         </div>
         <nav>
                            <li><a href="#home">Home</a></li>
@@ -52,9 +52,9 @@
                     <option value="pre-post-production">Pre/Post-Production Compliance Support</option>
                 </select>
                 <button type="submit">Submit</button>
-            </form>
-        </section>
-        <section id="blog">
+             <form action="/submit-quote" method="POST">
+             </section>
+         <section id="blog">
             <h2>Blog</h2>
             <p>Stay tuned for industry news, behind-the-scenes stories, and health & safety tips for film sets.</p>
         </section>
