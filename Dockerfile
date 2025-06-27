@@ -1,19 +1,18 @@
+
+# Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Set working directory
+# Set the working directory
 WORKDIR /workspace
 
-# Copy the dependencies file
+# Copy the requirements file
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code
+# Copy the rest of the application code
 COPY . .
 
-# Expose port 5000 for Flask
-EXPOSE 5000
-
-# Run the Flask application
+# Command to run the app
 CMD ["python", "app.py"]
