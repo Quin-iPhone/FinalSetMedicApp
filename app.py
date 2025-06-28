@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-app = Flask(__name__),
-app.secret_key = '85aeb3e01747b3727eacbf80eac269b2'
+app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'default_key')
 
 # Use SQLite for now (easy to start with)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedicapp.db'
