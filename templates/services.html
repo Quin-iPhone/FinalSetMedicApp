@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Set Medic App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+   " href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
@@ -14,6 +13,7 @@
             <a href="{{ url_for('index') }}">Home</a>
         </nav>
     </header>
+
     <div class="container">
         <ul>
             {% for service in services %}
@@ -25,10 +25,12 @@
             {% endfor %}
         </ul>
     </div>
+
     <footer>
         <p>&copy; 2025 Set Medic South Africa</p>
         <a href="#top" id="back-to-top">Back to Top</a>
     </footer>
+
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
