@@ -5,3 +5,5 @@ itsdangerous>=2.1.2  # Security-related functions
 MarkupSafe>=2.1.1  # Safe string handling
 gunicorn>=20.1.0  # Production WSGI server
 SQLAlchemy==1.4.27  # Database integration
+Flask-SQLAlchemy>=2.5.1
+psycopg2-binary>=2.9.6  # Only for PostgreSQL
