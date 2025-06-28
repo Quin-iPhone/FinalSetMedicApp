@@ -1,24 +1,25 @@
-from flask import Flask, render_template, request
-import os
+from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
-port = int(os.environ.get('PORT', 5000))
-app.run(debug=True, host='0.0.0.0', port=port)
-    
 @app.route('/')
 def home():
-    return render_template('index.html')
-    
-def submit_quote():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    service = request.form.get('service')
+    return render_template('home.html')
 
-    if not name or not email or not service:
-        flash('All fields are required.', 'error')
+@app.route('/quote', methods=['GET', 'POST'])
+def quote():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        service = request.form['service']
+        flash('Quote submitted successfully!', 'success')
         return redirect(url_for('quote'))
+    return render_template('quote.html')
 
-    # Simulate saving or processing the quote
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# Simulate saving or processing the quote
     flash(f'Thank you {name}, your quote request for "{service}" has been received!', 'success')
     return redirect(url_for('quote'))
