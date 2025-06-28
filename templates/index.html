@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <header>
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Set Medic South Africa" class="logo">
         <h1>Welcome to Set Medic App</h1>
         <nav>
@@ -16,16 +17,19 @@
             <a href="#contact">Contact Us</a>
         </nav>
     </header>
+
     <div class="container">
         <section class="commitment">
             <h2>Our Commitment</h2>
             <p>We believe that every production deserves a safe and secure environment. Our commitment goes beyond compliance—we prioritize proactive medical care, on-set risk prevention, and seamless emergency readiness, ensuring that cast and crew can focus on their craft with confidence.</p>
         </section>
     </div>
+
     <footer>
         <p>&copy; 2025 Set Medic South Africa</p>
         <a href="#top" id="back-to-top">Back to Top</a>
     </footer>
+
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
