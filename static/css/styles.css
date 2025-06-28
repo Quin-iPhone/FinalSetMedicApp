@@ -1,12 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
 }
 
-h1, h2 {
-    color: #333;
+header, footer {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header a, footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header a:hover, footer a:hover {
+    text-decoration: underline;
 }
 
 nav a {
@@ -19,7 +32,18 @@ nav a:hover {
     text-decoration: underline;
 }
 
-form20px auto;
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -63,4 +87,31 @@ ul li {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
+a {
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#back-to-top {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+}
+
+.commitment {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
