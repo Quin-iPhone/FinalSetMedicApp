@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 5000
 
 # Run the Flask application
-CMD ["python", "app.py"]
+ENV FLASK_APP=app.py
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
