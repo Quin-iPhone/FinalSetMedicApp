@@ -1,4 +1,4 @@
-startCommand: gunicorn app:app
+startCommand: gunicorn app:app --bind 0.0.0.0:5000
 services:
   - type: web
     name: set-medic-app
