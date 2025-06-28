@@ -36,62 +36,38 @@ It also includes a blog, social media integration, and a responsive, branded use
    ```bash
    git clone https://github.com/Quin-iPhone/RetrySetMedicApp.git
    cd RetrySetMedicApp
-   ```
 
-2. **(Optional) Create a Virtual Environment**
+2. (Optional) Create a Virtual Environment
+2. python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
 
-   ```bash
-   gunicorn app:app env
-   source env/bin/activate  # On Windows: env\Scripts\activate
-   ```
+3. Install Dependencies
+3. pip install -r requirements.txt
 
-3. **Install Dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the Application**
-
-      - **Environment:** Python 3
-   - **Build Command:**
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - **Start Command:**
-     ```bash
-     gunicorn app:app
-     ```
-
+4. Run the Application
+4. python app.py
 
 5. Open your browser and go to http://localhost:5000
-
----
-
-## ☁️ Deployment on Render.com
-
+⸻
+☁️ Deployment on Render.com
 To deploy the Set Medic App on Render.com:
+1. Push your code to a GitHub repository.
+2. Log in to Render and click "New Web Service".
+3. Connect your GitHub repo and select the branch.
+4. Fill in the following settings:
+    • Environment: Python 3
+    • Build Command:
+    • pip install -r requirements.txt
 
-   - **Environment:** Python 3
-   - **Build Command:**
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - **Start Command:**
-     ```bash
-     gunicorn app:app
-     ```
+    • Start Command:
+    • gunicorn app:app
 
----
-
-## 🎨 Customization
-
-- **Styling**  
-  Modify `static/css/style.css` to adjust colors, fonts, and layout.
-
-- **Payment & Data Integration**  
-  Expand `app.py` to integrate real payment gateways (e.g., Stripe, PayPal) and databases.
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+⸻
+🎨 Customization
+• Styling
+Modify static/css/style.css to adjust colors, fonts, and layout.
+• Payment & Data Integration
+Expand app.py to integrate real payment gateways (e.g., Stripe, PayPal) and databases.
+⸻
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for details.
