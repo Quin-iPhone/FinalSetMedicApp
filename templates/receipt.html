@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receipt</title>
+    <title>Receipt - Set Medic App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
-        <h</h1>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Set Medic South Africa" class="logo">
+        <h1>Payment Receipt</h1>
         <nav>
             <a href="{{ url_for('index') }}">Home</a>
         </nav>
     </header>
+
     <div class="container">
-        <p>Receipt Number: {{ receipt.receipt_number }}</p>
-        <p>Name: {{ receipt.name }}</p>
-        <p>Company: {{ receipt.company }}</p>
-        <p>Service: {{ receipt.service.name }}</p>
-        <p>Total Amount: ${{ receipt.total_amount }}</p>
+        <h2>Receipt #{{ receipt.id }}</h2>
+        <p><strong>Date:</strong> {{ receipt.date }}</p>
+        <p><strong>Client:</strong> {{ receipt.client_name }}</p>
+        <p><strong>Amount Paid:</strong> ${{ receipt.amount }}</p>
+        <p><strong>Payment Method:</strong> {{ receipt.method }}</p>
     </div>
+
     <footer>
-        <p>&copy; 2025 Your Company</p>
+        <p>&copy; 2025 Set Medic South Africa</p>
+        <a href="#top" id="back-to-top">Back to Top</a>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
-
