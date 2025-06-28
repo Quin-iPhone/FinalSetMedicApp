@@ -6,7 +6,7 @@ app = Flask(__name__),
 app.secret_key = 'your-secret-key'  # Replace with a secure key in production
 
 # Use SQLite for now (easy to start with)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedic.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedicapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
