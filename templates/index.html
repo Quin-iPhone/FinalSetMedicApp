@@ -1,8 +1,17 @@
-index.html
-services.html
-quote.html
-invoice.html
-payment.html
-receipt.html
-blog.html
-blog_detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to Our Service</h1>
+    <nav>
+        <a href="{{ url_for('services_page') }}">Services</a>
+        <a href="{{ url_for('quote') }}">Get a Quote</a>
+        <a href="{{ url_for('blog') }}">Blog</a>
+    </nav>
+</body>
+</html>
+
