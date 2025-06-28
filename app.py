@@ -6,7 +6,10 @@ app = Flask(__name__)
 port = int(os.environ.get('PORT', 5000))
 app.run(debug=True, host='0.0.0.0', port=port)
     
-@app.route('/submit-quote', methods=['POST'])
+@app.route('/')
+def home():
+    return render_template('index.html')
+    
 def submit_quote():
     name = request.form.get('name')
     email = request.form.get('email')
