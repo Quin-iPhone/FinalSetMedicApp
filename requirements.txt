@@ -3,5 +3,6 @@ Werkzeug==2.2.3  # WSGI utility library
 Jinja2>=3.1.2  # Templating engine
 itsdangerous>=2.1.2  # Security-related functions
 MarkupSafe>=2.1.1  # Safe string handling
+gunicorn app:app
 # Add any additional dependencies below
 # SQLAlchemy==1.4.27  # Example for database integration
