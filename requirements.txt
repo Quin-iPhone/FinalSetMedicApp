@@ -5,4 +5,4 @@ itsdangerous>=2.1.2  # Security-related functions
 MarkupSafe>=2.1.1  # Safe string handling
 gunicorn app:app
 # Add any additional dependencies below
-# SQLAlchemy==1.4.27  # Example for database integration
+SQLAlchemy==1.4.27  # Example for database integration
