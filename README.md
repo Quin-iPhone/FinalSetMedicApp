@@ -34,8 +34,8 @@ It also includes a blog, social media integration, and a responsive, branded use
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/Quin-iPhone/RetrySetMedicApp.git
-   cd RetrySetMedicApp
+   git clone https://github.com/Quin-iPhone/FinalSetMedicApp.git
+   cd FinalSetMedicApp
 
 2. (Optional) Create a Virtual Environment
 2. python -m venv env
