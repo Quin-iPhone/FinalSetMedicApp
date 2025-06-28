@@ -5,7 +5,7 @@ FROM python:3.10-slim
 WORKDIR /workspace
 
 # Copy dependency file
-COPY requirements.txt .
+COPY requirements.txt
 
 # Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
