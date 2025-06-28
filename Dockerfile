@@ -5,7 +5,7 @@ FROM python:3.10-slim
 WORKDIR /workspace
 
 # Copy dependency file
-COPY requirements.txt
+COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
@@ -16,6 +16,5 @@ COPY . .
 # Expose Flask default port
 EXPOSE 5000
 
-# Run the Flask application
-ENV FLASK_APP=app.py
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+# Run the Flask application with gunicorn
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
