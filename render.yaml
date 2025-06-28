@@ -1,3 +1,4 @@
+startCommand: gunicorn app:app
 services:
   - type: web
     name: set-medic-app
