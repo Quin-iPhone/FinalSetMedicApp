@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
 import os
 
-app = Flask(__name__), from flask_sqlalchemy import SQLAlchemy
-import os
+app = Flask(__name__),
+app.secret_key = 'your-secret-key'  # Replace with a secure key in production
 
 # Use SQLite for now (easy to start with)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedic.db'
@@ -10,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-app.secret_key = 'your-secret-key'  # Replace with a secure key in production
+
 
 # Dummy data
 services = [
