@@ -14,32 +14,39 @@
             <a href="{{ url_for('index') }}">Home</a>
         </nav>
     </header>
+
     <div class="container">
-        <form method="POST">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+            <input type="text" id="name" name="name" required>
+
             <label for="company">Company:</label>
-           " id="company" name="company"><br>
+            <input type="text" id="company" name="company">
+
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" required>
+
             <label for="contact">Contact:</label>
-            <input type="text" id="contact" name="contact" required><br>
+            <input type="text" id="contact" name="contact" required>
+
             <label for="service">Select Service:</label>
             <select id="service" name="service" required>
                 {% for service in services %}
                 <option value="{{ service.id }}">{{ service.name }}</option>
                 {% endfor %}
-            </select><br>
+            </select>
+
             <label for="details">Details:</label>
-            <textarea id="details" name="details"></textarea><br>
+            <textarea id="details" name="details"></textarea>
+
             <button type="submit">Submit</button>
         </form>
     </div>
+
     <footer>
         <p>&copy; 2025 Set Medic South Africa</p>
         <a href="#top" id="back-to-top">Back to Top</a>
     </footer>
+
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
-``
