@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__),
-app.secret_key = 85aeb3e01747b3727eacbf80eac269b2  # Replace with a secure key in production
+app.secret_key = '85aeb3e01747b3727eacbf80eac269b2'
 
 # Use SQLite for now (easy to start with)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedicapp.db'
