@@ -41,7 +41,7 @@ It also includes a blog, social media integration, and a responsive, branded use
 2. **(Optional) Create a Virtual Environment**
 
    ```bash
-   python -m venv env
+   gunicorn app:app env
    source env/bin/activate  # On Windows: env\Scripts\activate
    ```
 
@@ -53,9 +53,16 @@ It also includes a blog, social media integration, and a responsive, branded use
 
 4. **Run the Application**
 
-   ```bash
-   python app.py
-   ```
+      - **Environment:** Python 3
+   - **Build Command:**
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - **Start Command:**
+     ```bash
+     gunicorn app:app
+     ```
+
 
 5. Open your browser and go to http://localhost:5000
 
@@ -65,11 +72,6 @@ It also includes a blog, social media integration, and a responsive, branded use
 
 To deploy the Set Medic App on Render.com:
 
-1. Push your code to a GitHub repository.
-2. Log in to Render and click **"New Web Service"**.
-3. Connect your GitHub repo and select the branch.
-4. Fill in the following settings:
-
    - **Environment:** Python 3
    - **Build Command:**
      ```bash
@@ -77,8 +79,9 @@ To deploy the Set Medic App on Render.com:
      ```
    - **Start Command:**
      ```bash
-     python app.py
+     gunicorn app:app
      ```
+
 ---
 
 ## 🎨 Customization
