@@ -1,4 +1,3 @@
-startCommand: gunicorn app:app --bind 0.0.0.0:5000
 services:
   - type: web
     name: set-medic-app
@@ -10,3 +9,4 @@ services:
         value: production
       - key: FLASK_APP
         value: app.py
+    startCommand: gunicorn app:app --bind 0.0.0.0:5000
