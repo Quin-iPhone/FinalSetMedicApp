@@ -20,9 +20,10 @@ class Quote(db.Model):
     details = db.Column(db.Text)
 
 class BlogPost(db.Model):
-   .Column(db.String(300))
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(300), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    date = db.Column(db.String(20))
+    date = db.Column(db.DateTime)
 
 class InvoiceItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,7 +33,7 @@ class InvoiceItem(db.Model):
 
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String(20))
+    date = db.Column(db.DateTime)
     client_name = db.Column(db.String(100), nullable=False)
     items = db.relationship('InvoiceItem', backref='invoice', lazy=True)
     total = db.Column(db.Float)
@@ -42,11 +43,15 @@ class Payment(db.Model):
     invoice_id = db.Column(db.Integer, db.ForeignKey('invoice.id'), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     payment_method = db.Column(db.String(50), nullable=False)
-    date = db.Column(db.String(20))
+    date = db.Column(db.DateTime)
 
 class Receipt(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String(20))
+    date = db.Column(db.DateTime)
     client_name = db.Column(db.String(100), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     method = db.Column(db.String(50), nullable=False)
+
+def __repr__(self):
+    return f"<Service {self.name}>"
+
