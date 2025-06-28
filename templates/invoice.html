@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
-   /styles.css') }}">
+    <title>Invoice - Set Medic App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Set Medic South Africa" class="logo">
         <h1>Invoice</h1>
         <nav>
             <a href="{{ url_for('index') }}">Home</a>
         </nav>
     </header>
+
     <div class="container">
-        <p>Invoice Number: {{ invoice.invoice_number }}</p>
-        <p>Name: {{ invoice.name }}</p>
-        <p>Company: {{ invoice.company }}</p>
-        <p>Service: {{ invoice.service.name }}</p>
-        <p>Total Amount: ${{ invoice.total_amount }}</p>
-        <a hrefa>
+        <h2>Invoice #{{ invoice.id }}</h2>
+        <p><strong>Date:</strong> {{ invoice.date }}</p>
+        <p><strong>Client:</strong> {{ invoice.client_name }}</p>
+
+        <ul>
+            {% for item in invoice.items %}
+            <li>
+                <strong>{{ item.description }}</strong> - ${{ item.amount }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Total:</strong> ${{ invoice.total }}</p>
     </div>
+
     <footer>
-        <p>&copy; 2025 Your Company</p>
+        <p>&copy; 2025 Set Medic South Africa</p>
+        <a href="#top" id="back-to-top">Back to Top</a>
     </footer>
+
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
