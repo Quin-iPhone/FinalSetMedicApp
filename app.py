@@ -91,6 +91,37 @@ def blog_detail(post_id):
         return redirect(url_for('blog'))
     return render_template('blog_detail.html', post=post)
 
+import stripe
+from flask import jsonify, redirect, url_for, session
+
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    invoice_data = session.get('invoice_data')
+    if not invoice_data:
+        return redirect(url_for('quote'))
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'usd',
+                    'product_data': {
+                        'name': invoice_data['service']['name'],
+                    },
+                    'unit_amount': int(invoice_data['total_amount'] * 100),
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url=url_for('receipt', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=url_for('payment', _external=True),
+        )
+        return redirect(checkout_session.url, code=303)
+    except Exception as e:
+        return jsonify(error=str(e)), 403
+
 # Run the app
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
