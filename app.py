@@ -9,6 +9,9 @@ app.secret_key = os.environ.get('SECRET_KEY', 'default_key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setmedicapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+from models import db, init_db
+init_db(app)
 db = SQLAlchemy(app)
 
 # Dummy data
