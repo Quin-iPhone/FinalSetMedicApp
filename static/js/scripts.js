@@ -10,6 +10,15 @@ function setupFormValidation() {
         form.addEventListener('submit', event => {
             const inputs = form.querySelectorAll('input, select, textarea');
             let isValid = true;
+     .invalid {
+         border-color: red;
+     }
+
+     .error-message {
+         color: red;
+         margin-bottom: 1em;
+         font-weight: bold;
+     }
 
             // Remove existing error message if any
             const existingError = form.querySelector('.error-message');
