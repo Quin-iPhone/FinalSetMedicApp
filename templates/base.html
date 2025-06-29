@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Set Medic App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css
+</head>
+<body>
+  <header data-aos="fade-down">
+    <div class="container header-container">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Set Medic App Logo" class="logo">
+      <h1>Set Medic App</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('services_page') }}">Services</a></li>
+          <li><a href="{{ url_for('quote') }}">Get a Quote</a></li>
+          <li><a href="{{ url_for('blog') }}">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="content container" data-aos="fade-up">
+    {% block content %}{% endblock %}
+  </div>
+  <footer data-aos="fade-up">
+    <div class="container">
+      <p>© 2025 Set Medic App</p>
+      <p>Follow us on 
+        https://facebook.com/setmedicsa, 
+        https://twitter.com/setmedicsa, 
+        https://instagram.com/setmedicsa
+      </p>
+    </div>
+  </footer>
+  https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js
+  https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js
+  <script>
+    AOS.init({ duration: 1000 });
+    gsap.from("header", { duration: 1, y: -50, opacity: 0 });
+    gsap.from(".content", { duration: 1, y: 50, opacity: 0, delay: 0.5 });
+  </script>
+</body>
+</html>
