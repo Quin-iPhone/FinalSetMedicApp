@@ -10,3 +10,33 @@ services:
       - key: FLASK_APP
         value: app.py
     startCommand: gunicorn app:app --bind 0.0.0.0:5000
+yaml services:   
+- type: web     
+name: set-medic-app     
+env: python     
+buildCommand: pip install -r requirements.txt     
+startCommand: python app.py     
+envVars:       
+- key: STRIPE_SECRET_KEY         
+value: your_stripe_secret_key_here
+- key: STRIPE_PUBLISHABLE_KEY         
+value: your_stripe_publishable_key_here       
+- key: MAIL_SERVER         
+value: smtp.example.com      
+- key: MAIL_PORT         
+value: 587       
+- key: MAIL_USE_TLS         
+value: true       
+- key: MAIL_USERNAME         
+value: your_email@example.com       
+- key: MAIL_PASSWORD        
+value: your_email_password     
+autoDeploy: true     
+plan: free     
+region: oregon     
+buildFilter:       
+paths:         
+- app.py        
+- requirements.txt        
+- templates/         
+- static/ 
