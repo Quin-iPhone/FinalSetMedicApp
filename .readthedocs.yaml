@@ -1,0 +1,28 @@
+# Read the Docs configuration file for Sphinx projects
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+version: 2
+
+formats: [pdf, epub]
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.13"
+  jobs:
+    create_environment:
+      - echo "Preparing environment"
+    install:
+      - echo "Installing dependencies"
+    build:
+      html:
+        - echo "Building HTML"
+        - mkdir -p $READTHEDOCS_OUTPUT/html/
+        - echo "Hello world!" > $READTHEDOCS_OUTPUT/html/index.html
+      pdf:
+        - echo "Building PDF"
+        - mkdir -p $READTHEDOCS_OUTPUT/pdf/
+        - echo "Hello world!" > $READTHEDOCS_OUTPUT/pdf/index.pdf
+      epub:
+        - echo "Building ePub"
+        - mkdir -p $READTHEDOCS_OUTPUT/epub/
+        - echo "Hello world!" > $READTHEDOCS_OUTPUT/epub/index.epub
