@@ -1,0 +1,8 @@
+:root {
+  --primary-color: #1e1e2f;
+  --secondary-color: #2c2c3e;
+  --accent-color: #ff4081;
+  --text-color: #f0f0f0;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* ... rest of the dark theme CSS ... */
