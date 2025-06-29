@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
+from flask import send_from_directory
 import os
 import stripe
+
+
+
+@app.route('/')
+def index():
+    return send_from_directory('frontend/build', 'index.html')
+
+@app.route('/<path:path>')
+def static_proxy(path):
+    return send_from_directory('frontend/build', path)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'default_key')
