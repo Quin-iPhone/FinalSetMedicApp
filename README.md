@@ -1,4 +1,4 @@
-Overview of Set Medic South Africa
+Overview of Set Medic App
 
 **Company Name**: Set Medic South Africa
 
@@ -8,8 +8,7 @@ Overview of Set Medic South Africa
 **Services Offered**:
 
 1. **On-Set Medical Support**: Immediate medical assistance during filming.
-2. **Emergency Response**: Rapid response to medical emergencies on set.
-3. **Health and Safety Training**: Training sessions for cast and crew on health and safety protocols.
+2. **Health and Safety Training**: Training sessions for cast and crew on health and safety protocols.
 4. **Medical Equipment Supply**: Provision of necessary medical equipment for on-set use.
 5. **Consultation Services**: Expert advice on health and safety planning for productions.
 
@@ -18,7 +17,6 @@ Overview of Set Medic South Africa
 - **Highly Qualified Staff**: Team of certified medical professionals with experience in the film industry.
 - **24/7 Availability**: Round-the-clock medical support to accommodate all production schedules.
 - **Customized Services**: Tailored medical services to meet the specific needs of each production.
-- **Advanced Medical Equipment**: State-of-the-art medical equipment to handle a wide range of medical situations.
 - **Compliance with Regulations**: Adherence to all local and international health and safety regulations.
 
 **Contact Information**:
@@ -29,7 +27,7 @@ Overview of Set Medic South Africa
 
 **Location**:
 
-- **Head Office**: Annalie Street, City of Tshwane, Gauteng, South Africa
+- **Head Office**: City of Tshwane, Gauteng, South Africa
 
 **Client Testimonials**:
 
