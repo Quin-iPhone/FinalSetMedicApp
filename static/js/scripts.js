@@ -35,7 +35,10 @@ function setupFormValidation() {
                 }
             });
 
-            if (!isValid) {
+             if (!isValid) {
+         inputs[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+{
                 event.preventDefault();
                 const errorMessage = document.createElement('div');
                 errorMessage.textContent = 'Please fill out all required fields correctly.';
