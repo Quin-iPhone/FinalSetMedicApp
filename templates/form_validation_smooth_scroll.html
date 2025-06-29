@@ -1,0 +1,165 @@
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation & Smooth Scroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            background: #f8f8f8;
+            width: 100%;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        section {
+            padding: 100px 20px;
+            margin-top: 60px;
+        }
+
+        .invalid {
+            border: 2px solid red;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#form-section">Go to Form</a>
+    <a href="#about-section">About</a>
+</nav>
+
+<section id="form-section">
+    <h2>Contact Form</h2>
+    <form>
+        <label>
+            Name (required):
+            <input type="text" name="name" required>
+        </label><br><br>
+
+        <label>
+            Email (required):
+            <input type="email" name="email" required>
+        </label><br><br>
+
+        <label>
+            Message:
+            <textarea name="message" required></textarea>
+        </label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<section id="about-section">
+    <h2>About</h2>
+    <p>This is a demo page for form validation and smooth scrolling.</p>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    setupFormValidation();
+    setupSmoothScrolling();
+});
+
+function setupFormValidation() {
+    const forms = document.querySelectorAll('form');
+
+    forms.forEach(form => {
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        // Real-time validation on blur
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if (!input.checkValidity()) {
+                    input.classList.add('invalid');
+                    input.setAttribute('aria-invalid', 'true');
+                } else {
+                    input.classList.remove('invalid');
+                    input.removeAttribute('aria-invalid');
+                }
+            });
+        });
+
+        form.addEventListener('submit', event => {
+            let isValid = true;
+
+            // Remove existing error message
+            const existingError = form.querySelector('.error-message');
+            if (existingError) existingError.remove();
+
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    isValid = false;
+                    input.classList.add('invalid');
+                    input.setAttribute('aria-invalid', 'true');
+                } else {
+                    input.classList.remove('invalid');
+                    input.removeAttribute('aria-invalid');
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = 'Please fill out all required fields correctly.';
+                errorMessage.classList.add('error-message');
+                errorMessage.setAttribute('aria-live', 'polite');
+                form.prepend(errorMessage);
+
+                // Scroll to first invalid input
+                const firstInvalid = form.querySelector('.invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstInvalid.focus();
+                }
+            }
+        });
+    });
+}
+
+function setupSmoothScrolling() {
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+</script>
+
+</body>
+</html>
+"""
+
+# Save the HTML content to a file
+with open("form_validation_smooth_scroll.html", "w", encoding="utf-8") as file:
+    file.write(html_content)
+
+"form_validation_smooth_scroll.html file has been created successfully."
